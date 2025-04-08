@@ -1,0 +1,19 @@
+@use "sass:map";
+
+@mixin respond-to($name) {
+  $mediaQueries: (
+    "SM": "(min-width: 640px)",
+    "MD": "(min-width: 768px)",
+    "LG": "(min-width: 1024px)",
+    "XL": "(min-width: 1280px) ",
+    "2XL": "(min-width: 1440px) ",
+    "3XL": "(min-width: 1580x)",
+    "4XL": "(min-width: 1920px)",
+  );
+
+  @if map.has-key($mediaQueries, $name) {
+    @media #{map.get($mediaQueries, $name)} {
+      @content;
+    }
+  }
+}

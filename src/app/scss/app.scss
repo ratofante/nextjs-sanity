@@ -1,0 +1,14 @@
+@use "core/reset";
+@use "core/vars";
+@use "mixin/main" as *;
+
+button {
+  background-color: rgb(var(--clr-primary));
+  color: rgb(var(--clr-white));
+  @include font-responsive(16px, 24px, 320px, 1440px);
+
+  @include respond-to("SM") {
+    color: rgb(var(--clr-black));
+    background-color: rgb(var(--clr-white));
+  }
+}
