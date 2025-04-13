@@ -1,5 +1,5 @@
 import { SanityLive } from "@/sanity/lib/live";
-import { Header } from "@/components/Header";
+//import { Header } from "@/components/Header";
 
 export default function FrontendLayout({
   children,
@@ -8,7 +8,7 @@ export default function FrontendLayout({
 }>) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
       <SanityLive />
     </>

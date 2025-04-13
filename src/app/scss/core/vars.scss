@@ -1,6 +1,15 @@
 :root {
   --clr-primary: 118, 213, 223;
   --clr-secondary: 63, 61, 86;
+  --clr-tertiary: 45, 41, 93;
   --clr-black: 23, 23, 23;
-  --clr-white: 245, 245, 245;
+  --clr-surface: 245, 245, 245;
+  --clr-white: 255, 255, 255;
+
+  --hero-padding-sm: 15svh;
+  --hero-padding-md: 128px, 18vw, 200px;
+
+  --section-padding-block-sm: 80px;
+  --section-padding-block-md: 120px;
+  --section-padding-block-lg: 160px;
 }

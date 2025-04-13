@@ -6,6 +6,5 @@ export default async function Page() {
   const pageHome = await sanityFetch({
     query: PAGE_HOME_QUERY,
   });
-  console.log(pageHome);
   return <HeroV1 {...pageHome.data?.hero} />;
 }

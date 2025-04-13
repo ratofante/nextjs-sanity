@@ -1,0 +1,258 @@
+@use "../mixin/main" as *;
+
+#hero-v1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15svh;
+  padding-bottom: var(--section-padding-block-sm);
+  text-align: center;
+  overflow-x: hidden;
+
+  @include respond-to("MD") {
+    padding-top: clamp(var(--hero-padding-md));
+    flex-direction: row;
+    text-align: left;
+    padding-bottom: var(--section-padding-block-md);
+    overflow: hidden;
+  }
+
+  @include respond-to("LG") {
+    padding-bottom: var(--section-padding-block-lg);
+  }
+
+  .content {
+    position: relative;
+    min-height: calc(100svh - var(--hero-padding-sm));
+    flex: 1 0 50%;
+
+    @include respond-to("MD") {
+      min-height: unset;
+    }
+
+    button {
+      margin-block: 24px;
+    }
+  }
+
+  .hero__logo {
+    display: block;
+    margin-inline: auto;
+    margin-bottom: 18px;
+
+    @include respond-to("MD") {
+      display: none;
+    }
+  }
+  span {
+    color: rgba(var(--clr-secondary), 0.8);
+    @include font("Roboto", 500);
+    @include font-responsive(18px, 22px, 320px, 768px);
+  }
+  h1 {
+    color: rgb(var(--clr-black));
+    margin-block: 16px;
+    @include font("Anaheim", 600);
+    @include font-responsive(48px, 64px, 320px, 768px);
+
+    @include respond-to("MD") {
+      @include font-responsive(64px, 92px, 768px, 1580px);
+    }
+  }
+  p {
+    @include font("Roboto", 400);
+    font-size: 22px;
+    line-height: 1.55;
+    max-width: 430px;
+    @include respond-to("MD") {
+    }
+
+    @supports (text-wrap: pretty) {
+      text-wrap: pretty;
+    }
+  }
+
+  .steps {
+    position: relative;
+    @include respond-to("MD") {
+      flex: 1 0 50%;
+    }
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+    padding-block: 64px;
+    @include respond-to("MD") {
+      gap: 32px;
+      align-items: end;
+    }
+
+    @include respond-to("LG") {
+      gap: 40px;
+      align-items: center;
+    }
+
+    li {
+      width: fit-content;
+
+      @include respond-to("MD") {
+        &:nth-child(2) {
+          padding-right: 32px;
+        }
+      }
+    }
+  }
+  .step article {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border-radius: 16px;
+    background-color: rgb(var(--clr-white));
+    box-shadow: 0 4px 4px rgba(var(--clr-black), 0.25);
+    text-align: left;
+
+    @include respond-to("MD") {
+      display: none;
+    }
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      @include font("Anaheim", 600);
+      font-size: 26px;
+      color: rgb(var(--clr-black));
+
+      span {
+        width: 28px;
+        height: 28px;
+        display: inline-grid;
+        place-items: center;
+        border: 2px solid rgba(var(--clr-secondary), 0.8);
+        line-height: 1;
+        border-radius: 999px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
+      color: rgb(var(--clr-tertiary));
+      @include font("Roboto", 500);
+      padding: 8px 16px 0px 0px;
+      line-height: 1;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .button__step {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+
+    @include respond-to("MD") {
+      display: flex;
+    }
+
+    span,
+    p {
+      display: grid;
+      place-items: center;
+      height: 40px;
+      @include font("Anaheim", 600);
+      font-size: 20px;
+      color: rgb(var(--clr-black));
+      background-color: rgb(var(--clr-white));
+      border-radius: 999px;
+      border: 1px solid rgb(var(--clr-black));
+      line-height: 1;
+      box-shadow: 0 4px 4px rgba(var(--clr-black), 0.25);
+
+      @include respond-to("LG") {
+        height: 48px;
+      }
+    }
+
+    span {
+      width: 40px;
+
+      @include respond-to("LG") {
+        width: 48px;
+      }
+    }
+
+    p {
+      flex: 0 1 0;
+      padding-inline: 16px;
+      min-width: fit-content;
+
+      @include respond-to("LG") {
+        padding-inline: 24px;
+      }
+    }
+  }
+  .hero__image__wrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+
+    &.portrait {
+      bottom: 30vh;
+      @include respond-to("MD") {
+        display: none;
+      }
+    }
+
+    &:not(.portrait) {
+      display: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include respond-to("MD") {
+        display: block;
+      }
+    }
+
+    @include respond-to("MD") {
+      top: 0;
+    }
+  }
+  .hero__image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    @include respond-to("MD") {
+      top: 50%;
+      width: 60vw;
+      max-width: 800px;
+      height: auto;
+      aspect-ratio: 1/1;
+      transform: translate(-35%, -50%);
+    }
+
+    @include respond-to("LG") {
+      transform: translate(-40%, -50%);
+    }
+
+    @include respond-to("XL") {
+      transform: translate(-50%, -50%);
+    }
+  }
+}

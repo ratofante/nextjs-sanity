@@ -1,9 +1,12 @@
 import { defineType, defineField } from "sanity";
+import { preview } from "sanity-plugin-icon-picker";
+import { MdHouse } from "react-icons/md";
 
 export const pageHomeType = defineType({
   name: "pageHome",
   title: "Page: Home",
   type: "document",
+  icon: MdHouse,
   fields: [
     defineField({
       name: "hero",
@@ -89,8 +92,44 @@ export const pageHomeType = defineType({
             defineField({
               name: "step",
               title: "Step",
-              type: "string",
-              validation: (Rule) => Rule.required().min(10).max(30),
+              type: "object",
+              fields: [
+                defineField({
+                  name: "title",
+                  title: "Title",
+                  type: "string",
+                  validation: (Rule) => Rule.required().min(10).max(25),
+                }),
+                defineField({
+                  name: "description",
+                  title: "Description",
+                  type: "string",
+                  validation: (Rule) => Rule.required().max(100),
+                }),
+                defineField({
+                  name: "icon",
+                  title: "Icon",
+                  type: "iconPicker",
+                  options: {
+                    providers: ["mdi"],
+                    outputFormat: "react",
+                  },
+                }),
+              ],
+              preview: {
+                select: {
+                  title: "title",
+                  icon: "icon",
+                },
+                prepare(selection) {
+                  const { title, icon } = selection;
+                  console.log(selection);
+                  return {
+                    title: title,
+                    media: preview(icon),
+                  };
+                },
+              },
             }),
           ],
         }),

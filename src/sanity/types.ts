@@ -89,7 +89,12 @@ export type PageHome = {
       crop?: SanityImageCrop;
       _type: "image";
     };
-    steps?: Array<string>;
+    steps?: Array<{
+      title?: string;
+      description?: string;
+      _type: "step";
+      _key: string;
+    }>;
     cta?: string;
     ctaLink?: string;
     mainColor?: Color;
@@ -503,7 +508,12 @@ export type PAGE_HOME_QUERYResult = {
       crop?: SanityImageCrop;
       _type: "image";
     };
-    steps?: Array<string>;
+    steps?: Array<{
+      title?: string;
+      description?: string;
+      _type: "step";
+      _key: string;
+    }>;
     cta?: string;
     ctaLink?: string;
     mainColor?: Color;

@@ -2,13 +2,52 @@
 @use "core/vars";
 @use "mixin/main" as *;
 
-button {
-  background-color: rgb(var(--clr-primary));
-  color: rgb(var(--clr-white));
-  @include font-responsive(16px, 24px, 320px, 1440px);
+// Components
+@use "components/button-primary";
+
+// Sections
+@use "sections/pageHomeHero";
+
+body {
+  @include font("Roboto", 400, normal);
+  color: rgb(var(--clr-secondary));
+  background-color: rgb(var(--clr-surface));
+}
+
+main {
+  overflow-x: hidden;
+  min-height: 100svh;
+}
+
+.container__wide {
+  padding-inline: 16px;
+  max-width: 1440px;
+  margin-inline: auto;
 
   @include respond-to("SM") {
-    color: rgb(var(--clr-black));
-    background-color: rgb(var(--clr-white));
+    padding-inline: 24px;
   }
+
+  @include respond-to("MD") {
+    padding-inline: 32px;
+  }
+
+  @include respond-to("LG") {
+    padding-inline: 40px;
+  }
+
+  @include respond-to("XL") {
+    padding-inline: 70px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font("Anaheim", 600);
+  line-height: 0.9;
+  letter-spacing: -1px;
 }

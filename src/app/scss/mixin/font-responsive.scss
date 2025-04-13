@@ -10,7 +10,7 @@
 @use "sass:meta";
 
 @function strip-unit($number) {
-  @if meta.type-of($number) == "number" and math.is-unitless($number) {
+  @if meta.type-of($number) == "number" {
     @return math.div($number, ($number * 0 + 1));
   }
   @return $number;
@@ -24,7 +24,7 @@
 
   font-size: $minFontSize;
 
-  @media (min-width: $minViewport) {
+  @media (min-width: $maxViewport) {
     font-size: $maxFontSize;
   }
 
