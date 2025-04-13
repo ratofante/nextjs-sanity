@@ -9,7 +9,7 @@ export default function FrontendLayout({
   return (
     <>
       <Header />
-      {children}
+      <main>{children}</main>
       <SanityLive />
     </>
   );

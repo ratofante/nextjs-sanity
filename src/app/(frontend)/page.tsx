@@ -1,12 +1,11 @@
-import Link from "next/link";
-import { Title } from "@/components/Blog/Title";
+import { HeroV1 } from "@/components/Section/HeroV1";
+import { sanityFetch } from "@/sanity/lib/live";
+import { PAGE_HOME_QUERY } from "@/sanity/lib/queries";
 
 export default async function Page() {
-  return (
-    <section>
-      <Title>Layer Caker Home Page</Title>
-      <hr />
-      <Link href="/posts">Posts index &rarr;</Link>
-    </section>
-  );
+  const pageHome = await sanityFetch({
+    query: PAGE_HOME_QUERY,
+  });
+  console.log(pageHome);
+  return <HeroV1 {...pageHome.data?.hero} />;
 }

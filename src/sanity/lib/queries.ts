@@ -47,3 +47,8 @@ export const POST_QUERY =
     image
   }
 }`);
+
+export const PAGE_HOME_QUERY = defineQuery(`*[_type == "pageHome"][0]{
+  _id,
+  hero
+}`);
