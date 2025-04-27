@@ -1,0 +1,11 @@
+@mixin font($family, $weight: null, $style: null) {
+  font-family: $family, "Arial", sans-serif, system-ui;
+
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  @if $style {
+    font-style: $style;
+  }
+}

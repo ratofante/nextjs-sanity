@@ -1,10 +1,10 @@
-import Link from "next/link";
+import { HeroV1 } from "@/components/Section/HeroV1";
+import { sanityFetch } from "@/sanity/lib/live";
+import { PAGE_HOME_QUERY } from "@/sanity/lib/queries";
 
 export default async function Page() {
-  return (
-    <section>
-      <Link href="/posts">Click me</Link>
-      <button>Click me</button>
-    </section>
-  );
+  const pageHome = await sanityFetch({
+    query: PAGE_HOME_QUERY,
+  });
+  return <HeroV1 {...pageHome.data?.hero} />;
 }
